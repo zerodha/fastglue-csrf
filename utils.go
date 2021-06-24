@@ -1,4 +1,4 @@
-package gluecsrf
+package csrf
 
 import (
 	"crypto/rand"

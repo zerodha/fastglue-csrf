@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/joeirimpan/gluecsrf"
+	csrf "github.com/joeirimpan/fastglue-csrf"
 	"github.com/valyala/fasthttp"
 	"github.com/zerodha/fastglue"
 )
@@ -21,7 +21,7 @@ func main() {
 		ReadBufferSize:       512000,
 	}
 
-	csrf := gluecsrf.New(gluecsrf.Config{
+	csrf := csrf.New(csrf.Config{
 		AuthKey: []byte(`12345678901234567890123456789012`),
 		Name:    "custom_csrf",
 		MaxAge:  100,

@@ -1,4 +1,4 @@
-module github.com/joeirimpan/gluecsrf
+module github.com/joeirimpan/fastglue-csrf
 
 go 1.16
 

@@ -1,14 +1,14 @@
-# gluecsrf
+# fastglue-csrf
 
 ## Overview [![Zerodha Tech](https://zerodha.tech/static/images/github-badge.svg)](https://zerodha.tech)
 
-gluecsrf implements CSRF middleware for [fastglue](https://github.com/zerodha/fastglue). 
+fastglue-csrf implements CSRF middleware for [fastglue](https://github.com/zerodha/fastglue). 
 
 
 ## Install
 
 ```
-go get github.com/joeirimpan/gluecsrf
+go get github.com/joeirimpan/fastglue-csrf
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ go get github.com/joeirimpan/gluecsrf
 ### Short
 ```golang
 g := fastglue.NewGlue()
-csrf := gluecsrf.New(gluecsrf.Config{
+csrf := csrf.New(csrf.Config{
 	AuthKey: []byte(`12345678901234567890123456789012`), // random 32 length key for encrypting
 	Name:    "custom_csrf",
 	MaxAge:  100,
@@ -34,7 +34,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/joeirimpan/gluecsrf"
+	"github.com/joeirimpan/fastglue-csrf"
 	"github.com/valyala/fasthttp"
 	"github.com/zerodha/fastglue"
 )
@@ -51,7 +51,7 @@ func main() {
 		ReadBufferSize:       512000,
 	}
 
-	csrf := gluecsrf.New(gluecsrf.Config{
+	csrf := csrf.New(csrf.Config{
 		AuthKey: []byte(`12345678901234567890123456789012`),
 		Name:    "custom_csrf",
 		MaxAge:  100,

@@ -1,4 +1,4 @@
-package gluecsrf
+package csrf
 
 // Config represents the configs for csrf
 type Config struct {
