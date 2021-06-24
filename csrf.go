@@ -59,7 +59,7 @@ func (c *CSRF) Inject(handler fastglue.FastRequestHandler) fastglue.FastRequestH
 		}
 
 		// Encode and set the cookie in the header
-		value, err := c.sc.Encode(c.cfg.Name, tokenCookie{Token: []byte(tk)})
+		value, err := c.sc.Encode(c.cfg.Name, tokenCookie{Token: tk})
 		if err != nil {
 			c.deny(r)
 			return err
@@ -87,7 +87,7 @@ func (c *CSRF) Inject(handler fastglue.FastRequestHandler) fastglue.FastRequestH
 		}
 
 		// Mask csrf token
-		maskedTk, err := c.mask([]byte(tk))
+		maskedTk, err := c.mask(tk)
 		if err != nil {
 			c.deny(r)
 			return err
@@ -161,12 +161,10 @@ func (c *CSRF) deny(r *fastglue.Request) {
 
 // mask adds a OTP to the original token.
 func (c *CSRF) mask(realToken []byte) (string, error) {
-	tk, err := generateRandomString(CSRFTokenLength)
+	otp, err := generateRandomString(CSRFTokenLength)
 	if err != nil {
 		return "", err
 	}
-
-	otp := []byte(tk)
 
 	// XOR the OTP with the real token to generate a masked token. Append the
 	// OTP to the front of the masked token to allow unmasking in the subsequent

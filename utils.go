@@ -40,15 +40,15 @@ func setCookie(cookie *http.Cookie, w interface{}) error {
 
 // generateRandomString generates a cryptographically random,
 // alphanumeric string of length n.
-func generateRandomString(n int) (string, error) {
+func generateRandomString(n int) ([]byte, error) {
 	var bytes = make([]byte, n)
 	if _, err := rand.Read(bytes); err != nil {
-		return "", err
+		return []byte{}, err
 	}
 
 	for k, v := range bytes {
 		bytes[k] = randomString[v%byte(len(randomString))]
 	}
 
-	return string(bytes), nil
+	return bytes, nil
 }

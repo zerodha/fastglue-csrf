@@ -43,7 +43,7 @@ func setupTest() {
 	sampleKey, _ := generateRandomString(32)
 
 	csrf := New(Config{
-		AuthKey: []byte(sampleKey),
+		AuthKey: sampleKey,
 		Name:    "custom_csrf",
 		MaxAge:  100,
 		Path:    "/",
