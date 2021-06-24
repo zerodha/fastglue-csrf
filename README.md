@@ -61,11 +61,9 @@ func main() {
 	g.GET("/get", csrf.Inject(handlerGetSample))
 	g.POST("/post", csrf.Protect(handlerPostSample))
 
-	go func() {
-		if err := g.ListenServeAndWaitGracefully(":8888", "", s, shutDownCh); err != nil {
-			log.Fatalf("error starting server: %v", err)
-		}
-	}()
+	if err := g.ListenServeAndWaitGracefully(":8888", "", s, shutDownCh); err != nil {
+		log.Fatalf("error starting server: %v", err)
+	}
 }
 
 func handlerGetSample(r *fastglue.Request) error {

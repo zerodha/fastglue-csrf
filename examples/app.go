@@ -31,11 +31,10 @@ func main() {
 	testServer.GET("/get", csrf.Inject(handlerGetSample))
 	testServer.POST("/post", csrf.Protect(handlerPostSample))
 
-	go func() {
-		if err := testServer.ListenServeAndWaitGracefully(":8888", "", s, shutDownCh); err != nil {
-			log.Fatalf("error starting server: %v", err)
-		}
-	}()
+	if err := testServer.ListenServeAndWaitGracefully(":8888", "", s, shutDownCh); err != nil {
+		log.Fatalf("error starting server: %v", err)
+	}
+
 }
 
 func handlerGetSample(r *fastglue.Request) error {
