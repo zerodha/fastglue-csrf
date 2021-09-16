@@ -70,7 +70,7 @@ func (c *CSRF) Inject(handler fastglue.FastRequestHandler) fastglue.FastRequestH
 			Value:    value,
 			MaxAge:   c.cfg.MaxAge,
 			Path:     c.cfg.Path,
-			Secure:   true,
+			Secure:   !c.cfg.Unsecure,
 			HttpOnly: true,
 			SameSite: http.SameSite(c.cfg.SameSite),
 			Domain:   c.cfg.Domain,
@@ -152,7 +152,7 @@ func (c *CSRF) deny(r *fastglue.Request) {
 		Value:    "",
 		Expires:  fasthttp.CookieExpireDelete,
 		Path:     "/",
-		Secure:   true,
+		Secure:   !c.cfg.Unsecure,
 		HttpOnly: true,
 	}, r)
 
