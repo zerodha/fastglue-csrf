@@ -14,4 +14,6 @@ type Config struct {
 	Path string
 	// cookie domain
 	Domain string
+	// set this true for non https
+	Unsecure bool
 }
