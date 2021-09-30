@@ -1,4 +1,4 @@
-module github.com/joeirimpan/fastglue-csrf
+module github.com/zerodha/fastglue-csrf
 
 go 1.16
 

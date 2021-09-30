@@ -8,7 +8,7 @@ fastglue-csrf implements CSRF middleware for [fastglue](https://github.com/zerod
 ## Install
 
 ```
-go get github.com/joeirimpan/fastglue-csrf
+go get github.com/zerodha/fastglue-csrf
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/joeirimpan/fastglue-csrf"
+	"github.com/zerodha/fastglue-csrf"
 	"github.com/valyala/fasthttp"
 	"github.com/zerodha/fastglue"
 )

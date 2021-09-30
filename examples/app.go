@@ -4,9 +4,9 @@ import (
 	"log"
 	"time"
 
-	csrf "github.com/joeirimpan/fastglue-csrf"
 	"github.com/valyala/fasthttp"
 	"github.com/zerodha/fastglue"
+	csrf "github.com/zerodha/fastglue-csrf"
 )
 
 func main() {
